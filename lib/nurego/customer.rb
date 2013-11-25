@@ -1,8 +1,8 @@
 module Nurego
   class Customer < APIResource
-    def register(params)
+    def self.register(params)
       response, api_key = Nurego.request(:post, register_url, @api_key, params)
-      refresh_from({ :subscription => response }, api_key, true)
+      refresh_from({ :registration => response }, api_key, true)
       subscription
     end
 
@@ -14,7 +14,7 @@ module Nurego
 
     private
 
-    def register_url
+    def self.register_url
       url + '/register'
     end
 

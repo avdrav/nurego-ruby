@@ -12,6 +12,11 @@ require 'nurego/version'
 # Resources
 require 'nurego/util'
 require 'nurego/json'
+require 'nurego/nurego_object'
+require 'nurego/api_resource'
+require 'nurego/list_object'
+require 'nurego/customer'
+
 
 # Errors
 require 'nurego/errors/nurego_error'
@@ -68,7 +73,8 @@ module Nurego
     else
       payload = uri_encode(params)
     end
-
+puts "#{url}"
+puts "#{payload.inspect}"
     request_opts.update(:headers => request_headers(api_key).update(headers),
                         :method => method, :open_timeout => 30,
                         :payload => payload, :url => url, :timeout => 80)
@@ -147,7 +153,8 @@ module Nurego
     headers = {
       :user_agent => "Nurego/v1 RubyBindings/#{Nurego::VERSION}",
       :authorization => "Bearer #{api_key}",
-      :content_type => 'application/x-www-form-urlencoded'
+#      :content_type => 'application/x-www-form-urlencoded'
+      :content_type => 'application/json'
     }
 
     headers[:nurego_version] = api_version if api_version
