@@ -18,6 +18,8 @@ module Nurego
     def self.object_classes
       @object_classes ||= {
         'customer' => Customer,
+        'registration' => Registration,
+        'organization' => Organization,
         'list' => ListObject
       }
     end

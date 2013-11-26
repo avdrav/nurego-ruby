@@ -9,13 +9,22 @@ require 'multi_json'
 # Version
 require 'nurego/version'
 
+# API operations
+require 'nurego/api_operations/create'
+require 'nurego/api_operations/update'
+require 'nurego/api_operations/delete'
+require 'nurego/api_operations/list'
+
 # Resources
 require 'nurego/util'
 require 'nurego/json'
+require 'nurego/oauth'
 require 'nurego/nurego_object'
 require 'nurego/api_resource'
 require 'nurego/list_object'
+require 'nurego/registration'
 require 'nurego/customer'
+require 'nurego/organization'
 
 
 # Errors
@@ -27,12 +36,28 @@ require 'nurego/errors/authentication_error'
 
 module Nurego
   @api_base = 'https://api.nurego.com'
+  @provider_site = 'https://uaa.nurego.com'
+  @client_id = 'your client id'
+  @client_secret = 'your client secret'
 
   @ssl_bundle_path  = File.dirname(__FILE__) + '/data/ca-certificates.crt'
   @verify_ssl_certs = true
 
+  @logger = nil
+
   class << self
-    attr_accessor :api_key, :api_base, :verify_ssl_certs, :api_version
+    include OAuth
+
+    attr_accessor :api_key, :api_base, :verify_ssl_certs, :api_version, :access_token,
+                  :provider_site, :client_id, :client_secret, :logger
+  end
+
+  def self.login(username, password)
+    @access_token = fetch_header_token(username, password)
+  end
+
+  def self.logout
+    @access_token = nil
   end
 
   def self.api_url(url='')
@@ -73,8 +98,6 @@ module Nurego
     else
       payload = uri_encode(params)
     end
-puts "#{url}"
-puts "#{payload.inspect}"
     request_opts.update(:headers => request_headers(api_key).update(headers),
                         :method => method, :open_timeout => 30,
                         :payload => payload, :url => url, :timeout => 80)
@@ -152,12 +175,12 @@ puts "#{payload.inspect}"
   def self.request_headers(api_key)
     headers = {
       :user_agent => "Nurego/v1 RubyBindings/#{Nurego::VERSION}",
-      :authorization => "Bearer #{api_key}",
-#      :content_type => 'application/x-www-form-urlencoded'
-      :content_type => 'application/json'
+      :x_nurego_authorization => "Bearer #{api_key}",
+      :content_type => 'application/x-www-form-urlencoded'
     }
 
     headers[:nurego_version] = api_version if api_version
+    headers[:authorization] = @access_token  if @access_token
 
     begin
       headers.update(:x_nurego_client_user_agent => Nurego::JSON.dump(user_agent))
