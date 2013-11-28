@@ -1,6 +1,5 @@
 module Nurego
   class Customer < APIResource
-    include Nurego::APIOperations::Create
     include Nurego::APIOperations::List
 
     def self.me(api_key = nil)

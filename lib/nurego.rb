@@ -27,6 +27,7 @@ require 'nurego/customer'
 require 'nurego/organization'
 require 'nurego/instance'
 require 'nurego/connector'
+require 'nurego/passwordreset'
 
 
 # Errors

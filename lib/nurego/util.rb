@@ -22,6 +22,7 @@ module Nurego
         'organization' => Organization,
         'instance' => Instance,
         'connector' => Connector,
+        'passwordreset' => PasswordReset,
         'list' => ListObject
       }
     end

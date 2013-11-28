@@ -1,17 +1,14 @@
 require "nurego"
 require "uuidtools"
 
-Nurego.api_key = "t2fd15a9-a6ca-46b3-9799-c4d21fab4fac"
-Nurego.api_base = "http://localhost:31001"
+require_relative "example_setup"
 
-r = Nurego::Registration.create(
-#  {email: "ilia.gilderman+test1+#{UUIDTools::UUID.random_create.to_s}@gmail.com"}
-  {email: "ilia.gilderman+test114@gmail.com"}
-)
+example_set_api_key
 
+r = Nurego::Registration.create({email: EXAMPLE_EMAIL})
 puts "#{r.inspect}"
 
-customer = r.complete(id: r.id, password: "password")
+customer = r.complete(id: r.id, password: EXAMPLE_PASSWORD)
 
 puts "#{customer.inspect}"
 

@@ -1,14 +1,12 @@
 require "nurego"
 require "uuidtools"
 
-Nurego.client_id = "portal"
-Nurego.client_secret = "portalsecret"
-Nurego.provider_site = "http://localhost:8080/uaa"
-Nurego.api_base = "http://localhost:31001"
-Nurego.api_key = "t2fd15a9-a6ca-46b3-9799-c4d21fab4fac"
+require_relative "example_setup"
 
-Nurego.login("ilia.gilderman+test114@gmail.com", "password")
+example_set_api_key
+example_set_uaa_client
 
+Nurego.login(EXAMPLE_EMAIL, EXAMPLE_PASSWORD)
 #puts "#{Nurego.access_token}"
 
 c = Nurego::Customer.me
@@ -21,6 +19,11 @@ o = c.organizations
 puts "#{o.inspect}"
 
 o0 = Nurego::Organization.retrieve(id: o[0][:id])
+puts "#{o0.inspect}"
+
+o0[:name] = "new name"
+o0.save
+o0 = Nurego::Organization.retrieve(id: o0[:id])
 puts "#{o0.inspect}"
 
 i = o[0].instances
