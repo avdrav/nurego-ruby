@@ -6,7 +6,7 @@ Nurego.api_base = "http://localhost:31001"
 
 r = Nurego::Registration.create(
 #  {email: "ilia.gilderman+test1+#{UUIDTools::UUID.random_create.to_s}@gmail.com"}
-  {email: "ilia.gilderman+test1@gmail.com"}
+  {email: "ilia.gilderman+test114@gmail.com"}
 )
 
 puts "#{r.inspect}"

@@ -20,6 +20,8 @@ module Nurego
         'customer' => Customer,
         'registration' => Registration,
         'organization' => Organization,
+        'instance' => Instance,
+        'connector' => Connector,
         'list' => ListObject
       }
     end

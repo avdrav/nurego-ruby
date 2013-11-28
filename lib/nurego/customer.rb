@@ -8,6 +8,10 @@ module Nurego
       Util.convert_to_nurego_object(response, api_key)
     end
 
+    def organizations
+      Organization.all({:customer => id }, @api_key)
+    end
+
     def self.me_url
       '/v1/customers/me'
     end

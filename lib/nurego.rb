@@ -25,6 +25,8 @@ require 'nurego/list_object'
 require 'nurego/registration'
 require 'nurego/customer'
 require 'nurego/organization'
+require 'nurego/instance'
+require 'nurego/connector'
 
 
 # Errors
@@ -215,7 +217,7 @@ module Nurego
     begin
       error_obj = Nurego::JSON.load(rbody)
       error_obj = Util.symbolize_names(error_obj)
-      error = error_obj[:error] or raise NuregoError.new # escape from parsing
+      error = (error_obj && error_obj[:error]) or raise NuregoError.new # escape from parsing
 
     rescue MultiJson::DecodeError, NuregoError
       raise general_api_error(rcode, rbody)
