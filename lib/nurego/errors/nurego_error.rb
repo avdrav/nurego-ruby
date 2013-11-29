@@ -12,6 +12,10 @@ module Nurego
       @json_body = json_body
     end
 
+    def error_code
+      @json_body ? @json_body[:error][:code] : ""
+    end
+
     def to_s
       status_string = @http_status.nil? ? "" : "(Status #{@http_status}) "
       "#{status_string}#{@message}"

@@ -235,6 +235,8 @@ module Nurego
 
   end
 
+
+
   def self.invalid_request_error(error, rcode, rbody, error_obj)
     InvalidRequestError.new(error[:message], error[:param], rcode,
                             rbody, error_obj)

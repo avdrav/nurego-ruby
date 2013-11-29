@@ -1,4 +1,4 @@
-EXAMPLE_EMAIL = "ilia.gilderman+test114@gmail.com"
+EXAMPLE_EMAIL = "ilia.gilderman+test115@gmail.com"
 EXAMPLE_PASSWORD = "password"
 
 def example_set_api_key

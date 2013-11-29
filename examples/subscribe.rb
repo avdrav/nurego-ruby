@@ -5,10 +5,14 @@ require_relative "example_setup"
 
 example_set_api_key
 
-r = Nurego::Registration.create({email: EXAMPLE_EMAIL})
-puts "#{r.inspect}"
+begin
+  r = Nurego::Registration.create({email: EXAMPLE_EMAIL})
+  puts "#{r.inspect}"
 
-customer = r.complete(id: r.id, password: EXAMPLE_PASSWORD)
+  customer = r.complete(id: r.id, password: EXAMPLE_PASSWORD)
 
-puts "#{customer.inspect}"
+  puts "#{customer.inspect}"
+rescue Nurego::NuregoError => e
+  puts "ERROR #{e.error_code}"
+end
 

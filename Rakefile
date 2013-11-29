@@ -3,7 +3,7 @@ task :default => [:all]
 task :test do
   ret = true
   Dir["test/**/*_test.rb"].each do |f|
-    ret = ret && ruby(f, '')
+    ret = ret && ruby(f, '-Ilib')
   end
 end
 
