@@ -23,6 +23,10 @@ module Nurego
         'instance' => Instance,
         'connector' => Connector,
         'passwordreset' => PasswordReset,
+        'offering' => Offering,
+        'plan' => Plan,
+        'feature' => Feature,
+        'paymentmethod' => PaymentMethod,
         'list' => ListObject
       }
     end

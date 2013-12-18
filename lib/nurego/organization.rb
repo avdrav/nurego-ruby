@@ -6,5 +6,10 @@ module Nurego
     def instances
       Instance.all({:organization => id }, @api_key)
     end
+
+    def paymentmethod
+      PaymentMethod.all({:organization => id}, @api_key)
+    end
+
   end
 end
