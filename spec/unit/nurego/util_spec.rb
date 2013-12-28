@@ -1,8 +1,7 @@
 require File.expand_path('../../test_helper', __FILE__)
 
-module Nurego
-  class UtilTest < Test::Unit::TestCase
-    should "symbolize_names should convert names to symbols" do
+describe "Nurego::Util" do
+    it "symbolize_names should convert names to symbols" do
       start = {
         'foo' => 'bar',
         'array' => [{ 'foo' => 'bar' }],
@@ -23,7 +22,6 @@ module Nurego
       }
 
       symbolized = Nurego::Util.symbolize_names(start)
-      assert_equal(finish, symbolized)
+      symbolized.should eq(finish)
     end
-  end
 end

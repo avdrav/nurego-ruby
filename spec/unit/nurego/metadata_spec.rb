@@ -1,8 +1,7 @@
 require File.expand_path('../../test_helper', __FILE__)
 
-module Nurego
-  class MetadataTest < Test::Unit::TestCase
-    setup do
+describe "Nurego::Metadata" do
+    before do
       @metadata_supported = {
         :charge => {
           :new => Nurego::Charge.method(:new),
@@ -29,7 +28,7 @@ module Nurego
       @base_url = 'https://api.nurego.com'
     end
 
-    should "not touch metadata" do
+    it "not touch metadata" do
       update_actions = lambda {|obj| obj.description = 'test'}
       check_metadata({:metadata => {'initial' => 'true'}},
                     'description=test',
@@ -37,7 +36,7 @@ module Nurego
     end
 
 
-    should "update metadata as a whole" do
+    it "update metadata as a whole" do
       update_actions = lambda {|obj| obj.metadata = {'uuid' => '6735'}}
       check_metadata({:metadata => {}},
                     'metadata[uuid]=6735',
@@ -50,28 +49,28 @@ module Nurego
       end
     end
 
-    should "update metadata keys individually" do
+    it "update metadata keys individually" do
       update_actions = lambda {|obj| obj.metadata['txn_id'] = '134a13'}
       check_metadata({:metadata => {'initial' => 'true'}},
                      'metadata[txn_id]=134a13',
                      update_actions)
     end
 
-    should "clear metadata as a whole" do
+    it "clear metadata as a whole" do
       update_actions = lambda {|obj| obj.metadata = nil}
       check_metadata({:metadata => {'initial' => 'true'}},
                      'metadata=',
                      update_actions)
     end
 
-    should "clear metadata keys individually" do
+    it "clear metadata keys individually" do
       update_actions = lambda {|obj| obj.metadata['initial'] = nil}
       check_metadata({:metadata => {'initial' => 'true'}},
                      'metadata[initial]=',
                      update_actions)
     end
 
-    should "handle combinations of whole and partial metadata updates" do
+    it "handle combinations of whole and partial metadata updates" do
       if is_greater_than_ruby_1_9?
         update_actions = lambda do |obj|
           obj.metadata = {'type' => 'summer'}
@@ -110,5 +109,4 @@ module Nurego
       version = RUBY_VERSION.dup  # clone preserves frozen state
       Gem::Version.new(version) >= Gem::Version.new('1.9')
     end
-  end
 end

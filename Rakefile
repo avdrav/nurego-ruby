@@ -1,15 +1,12 @@
-task :default => [:all]
+require 'rspec'
+require "rspec/core/rake_task"
 
-task :test do
-  ret = true
-  Dir["test/**/*_test.rb"].each do |f|
-    ret = ret && ruby(f, '-Ilib')
+namespace "spec" do
+  RSpec::Core::RakeTask.new("unit") do |t|
+    t.rspec_opts = ["--format", "documentation", "--colour"]
+    t.pattern = "**/unit/**/*_spec.rb"
   end
 end
 
-task :all do
-  Rake::Task["test"].invoke
-  require 'active_support/all'
-  Rake::Task["test"].reenable
-  Rake::Task["test"].invoke
-end
+task :default => [:spec]
+task :spec => ['spec:unit']
