@@ -9,7 +9,7 @@ begin
   r = Nurego::Registration.create({email: EXAMPLE_EMAIL})
   puts "#{r.inspect}"
 
-  customer = r.complete(id: r.id, password: EXAMPLE_PASSWORD)
+  customer = Nurego::Registration.complete(id: r.id, password: EXAMPLE_PASSWORD)
 
   puts "#{customer.inspect}"
 rescue Nurego::NuregoError => e
