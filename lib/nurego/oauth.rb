@@ -28,7 +28,8 @@ module Nurego
     end
 
     def fetch_header_token(username, password)
-      fetch_access_info(username, password)[:header_token]
+      access_info = fetch_access_info(username, password)
+      { token: access_info[:header_token], expires_at: access_info[:expires_at] }
     end
 
     private

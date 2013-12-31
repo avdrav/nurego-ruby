@@ -55,16 +55,16 @@ module Nurego
   class << self
     include OAuth
 
-    attr_accessor :api_key, :api_base, :verify_ssl_certs, :api_version, :access_token,
+    attr_accessor :api_key, :api_base, :verify_ssl_certs, :api_version, :header_token,
                   :provider_site, :client_id, :client_secret, :logger
   end
 
   def self.login(username, password)
-    @access_token = fetch_header_token(username, password)
+    @header_token = fetch_header_token(username, password)
   end
 
   def self.logout
-    @access_token = nil
+    @header_token = nil
   end
 
   def self.api_url(url='')
@@ -187,7 +187,7 @@ module Nurego
     }
 
     headers[:nurego_version] = api_version if api_version
-    headers[:authorization] = @access_token  if @access_token
+    headers[:authorization] = @header_token[:token] if @header_token
 
     begin
       headers.update(:x_nurego_client_user_agent => Nurego::JSON.dump(user_agent))
