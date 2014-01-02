@@ -1,6 +1,7 @@
 module Nurego
   class Registration < APIResource
     include Nurego::APIOperations::Create
+    include Nurego::APIOperations::List
 
     def complete(params)
       response, api_key = Nurego.request(:post, complete_url, @api_key, params)
