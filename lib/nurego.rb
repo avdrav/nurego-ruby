@@ -39,6 +39,7 @@ require 'nurego/errors/nurego_error'
 require 'nurego/errors/api_error'
 require 'nurego/errors/api_connection_error'
 require 'nurego/errors/invalid_request_error'
+require 'nurego/errors/card_error'
 require 'nurego/errors/authentication_error'
 
 module Nurego
@@ -229,6 +230,8 @@ module Nurego
     end
 
     case rcode
+    when 402
+      raise card_error error, rcode, rbody, error_obj
     when 400, 404
       raise invalid_request_error error, rcode, rbody, error_obj
     when 401
@@ -244,6 +247,10 @@ module Nurego
   def self.invalid_request_error(error, rcode, rbody, error_obj)
     InvalidRequestError.new(error[:message], error[:param], rcode,
                             rbody, error_obj)
+  end
+
+  def self.card_error(error, rcode, rbody, error_obj)
+    CardError.new(error[:message], error[:param], rcode, rbody, error_obj)
   end
 
   def self.authentication_error(error, rcode, rbody, error_obj)

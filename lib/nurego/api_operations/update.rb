@@ -4,10 +4,6 @@ module Nurego
       def save
         values = serialize_params(self)
 
-        if @values[:metadata]
-          values[:metadata] = serialize_metadata
-        end
-
         if values.length > 0
           values.delete(:id)
 
@@ -17,22 +13,6 @@ module Nurego
         self
       end
 
-      def serialize_metadata
-        if @unsaved_values.include?(:metadata)
-          # the metadata object has been reassigned
-          # i.e. as object.metadata = {key => val}
-          metadata_update = @values[:metadata]  # new hash
-          new_keys = metadata_update.keys.map(&:to_sym)
-          # remove keys at the server, but not known locally
-          keys_to_unset = @previous_metadata.keys - new_keys
-          keys_to_unset.each {|key| metadata_update[key] = ''}
-
-          metadata_update
-        else
-          # metadata is a NuregoObject, and can be serialized normally
-          serialize_params(@values[:metadata])
-        end
-      end
 
       def serialize_params(obj)
         case obj

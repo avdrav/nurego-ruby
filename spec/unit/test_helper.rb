@@ -1,8 +1,6 @@
 require 'nurego'
-require 'test/unit'
-require 'mocha/setup'
+require 'minitest/unit'
 require 'stringio'
-require 'shoulda'
 
 #monkeypatch request methods
 module Nurego
@@ -27,7 +25,7 @@ def test_response(body, code=200)
   # When an exception is raised, restclient clobbers method_missing.  Hence we
   # can't just use the stubs interface.
   body = MultiJson.dump(body) if !(body.kind_of? String)
-  m = mock
+  m = double
   m.instance_variable_set('@nurego_values', { :body => body, :code => code })
   def m.body; @nurego_values[:body]; end
   def m.code; @nurego_values[:code]; end
@@ -36,17 +34,14 @@ end
 
 def test_customer(params={})
   {
-    :subscription_history => [],
-    :bills => [],
-    :charges => [],
-    :livemode => false,
     :object => "customer",
     :id => "c_test_customer",
-    :default_card => "cc_test_card",
-    :created => 1304114758,
-    :cards => test_card_array('c_test_customer'),
-    :metadata => {}
+    :email => 'test@email.com'
   }.merge(params)
+end
+
+def test_customer_array
+  (0..5).collect { test_customer }
 end
 
 #FIXME nested overrides would be better than hardcoding plan_id
@@ -95,20 +90,5 @@ def test_api_error
       :type => "api_error"
     }
   }
-end
-
-class Test::Unit::TestCase
-  include Mocha
-
-  setup do
-    @mock = mock
-    Nurego.mock_rest_client = @mock
-    Nurego.api_key="foo"
-  end
-
-  teardown do
-    Nurego.mock_rest_client = nil
-    Nurego.api_key=nil
-  end
 end
 
