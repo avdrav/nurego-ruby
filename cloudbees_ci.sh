@@ -10,10 +10,4 @@ export RACK_ENV=test
 gem install --conservative bundler
 bundle install
 
-[ -d "coverage" ] && rm -rf coverage
-mkdir coverage
-
-bundle exec rake spec:unit
-ret_code = $?
 bundle exec rake spec:rcov
-exit ret_code
