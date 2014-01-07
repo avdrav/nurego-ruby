@@ -1,9 +1,9 @@
-EXAMPLE_EMAIL = "ilia.gilderman+test116@gmail.com"
+EXAMPLE_EMAIL = "PLEASE CHANGE TO NEW UNIQUE EMAIL YOU WILL USE FOR REGISTER"
 EXAMPLE_PASSWORD = "password"
 
 def example_set_api_key
   Nurego.api_base = "http://localhost:31001"
-  Nurego.api_key = "t2fd15a9-a6ca-46b3-9799-c4d21fab4fac"
+  Nurego.api_key = "YOUR INSTANCE KEY"
 end
 
 def example_set_uaa_client

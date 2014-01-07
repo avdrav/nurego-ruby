@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Nurego::Customer" tests="7" time="0.002027068" failures="0" errors="0" skipped="6">
+  <testcase name="Nurego::Customer customers should be listable" time="0.001208816">
+  </testcase>
+  <testcase name="Nurego::Customer customers should be deletable (PENDING)" time="0.000133896">
+    <skipped/>
+  </testcase>
+  <testcase name="Nurego::Customer customers should be updateable (PENDING)" time="7.613e-05">
+    <skipped/>
+  </testcase>
+  <testcase name="Nurego::Customer create should return a new customer (PENDING)" time="8.8131e-05">
+    <skipped/>
+  </testcase>
+  <testcase name="Nurego::Customer be able to update a customer's subscription (PENDING)" time="7.4051e-05">
+    <skipped/>
+  </testcase>
+  <testcase name="Nurego::Customer be able to cancel a customer's subscription (PENDING)" time="5.6995e-05">
+    <skipped/>
+  </testcase>
+  <testcase name="Nurego::Customer be able to delete a customer's discount (PENDING)" time="7.2259e-05">
+    <skipped/>
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+  </system-err>
+</testsuite>

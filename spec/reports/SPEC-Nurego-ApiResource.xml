@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Nurego::ApiResource" tests="8" time="0.036693271" failures="0" errors="0" skipped="0">
+  <testcase name="Nurego::ApiResource creating a new APIResource should not fetch over the network" time="0.000820122">
+  </testcase>
+  <testcase name="Nurego::ApiResource creating a new APIResource from a hash should not fetch over the network" time="0.000820569">
+  </testcase>
+  <testcase name="Nurego::ApiResource setting an attribute should not cause a network request" time="0.001006657">
+  </testcase>
+  <testcase name="Nurego::ApiResource accessing id should not issue a fetch" time="0.00056233">
+  </testcase>
+  <testcase name="Nurego::ApiResource not specifying api credentials should raise an exception" time="0.001459951">
+  </testcase>
+  <testcase name="Nurego::ApiResource specifying api credentials containing whitespace should raise an exception" time="0.000293846">
+  </testcase>
+  <testcase name="Nurego::ApiResource specifying invalid api credentials should raise an exception" time="0.024479739">
+  </testcase>
+  <testcase name="Nurego::ApiResource AuthenticationErrors should have an http status, http body, and JSON body" time="0.006461794">
+  </testcase>
+  <system-out>
+  </system-out>
+  <system-err>
+WARNING: Running without SSL cert verification because /home/ilia/work/ops/nurego-ruby/lib/data/ca-certificates.crt isn't readable
+  </system-err>
+</testsuite>
