@@ -1,7 +1,5 @@
 /nurego-*.gem
-/Gemfile.lock
 .rvmrc
-Gemfile.lock
 .idea
 *.swp
 projectFilesBackup
