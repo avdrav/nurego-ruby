@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Nurego::Util" tests="1" time="0.00457206" failures="0" errors="0" skipped="0">
-  <testcase name="Nurego::Util symbolize_names should convert names to symbols" time="0.000295491">
-  </testcase>
-  <system-out>
-  </system-out>
-  <system-err>
-  </system-err>
-</testsuite>
