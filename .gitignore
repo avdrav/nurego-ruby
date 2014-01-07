@@ -5,4 +5,6 @@ Gemfile.lock
 .idea
 *.swp
 projectFilesBackup
+coverage
+spec_reports
 
