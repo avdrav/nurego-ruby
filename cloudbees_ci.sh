@@ -5,7 +5,15 @@ curl -s -o use-ruby https://repository-cloudbees.forge.cloudbees.com/distributio
 RUBY_VERSION=1.9.3-p327 \
  source ./use-ruby
 
+export RACK_ENV=test
+
 gem install --conservative bundler
 bundle install
 
-rake spec:unit
+[ -d "coverage" ] && rm -rf coverage
+mkdir coverage
+
+bundle exec rake spec:unit
+ret_code = $?
+bundle exec rake spec:rcov
+exit ret_code
