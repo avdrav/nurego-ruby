@@ -11,5 +11,9 @@ module Nurego
       PaymentMethod.all({:organization => id}, @api_key)
     end
 
+    def bills
+      Bill.all({ :organization => id }, @api_key)[:bills]
+    end
+
   end
 end

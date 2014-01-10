@@ -38,3 +38,12 @@ puts "#{con.inspect}"
 
 con0 = Nurego::Connector.retrieve(id: con[0][:id])
 puts "#{con0.inspect}"
+
+bills = o0.bills
+
+puts "#{bills.inspect}"
+
+bill = Nurego::Bill.retrieve(id: bills[:data][0][:id]) if bills[:count] > 0
+
+puts "#{bill.inspect}" if bill
+

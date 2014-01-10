@@ -27,6 +27,7 @@ module Nurego
         'plan' => Plan,
         'feature' => Feature,
         'paymentmethod' => PaymentMethod,
+        'bill' => Bill,
         'list' => ListObject
       }
     end

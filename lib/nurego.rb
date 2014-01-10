@@ -31,6 +31,7 @@ require 'nurego/password_reset'
 require 'nurego/offering'
 require 'nurego/plan'
 require 'nurego/feature'
+require 'nurego/bill'
 require 'nurego/payment_method'
 
 

@@ -11,4 +11,6 @@ group :test do
   gem "simplecov-rcov"
   gem "rack-test"
   gem "ci_reporter"
+  gem "uuidtools"
+
 end
