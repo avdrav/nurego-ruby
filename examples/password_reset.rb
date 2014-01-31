@@ -14,5 +14,8 @@ puts "#{pc.inspect}"
 pc = Nurego::PasswordReset.retrieve({id: pc[:id]})
 puts "#{pc.inspect}"
 
+pc = pc.complete({password: 'new password', current_password: EXAMPLE_PASSWORD})
+puts "#{pc.inspect}"
+
 pc1 = pc.delete
 puts "#{pc1.inspect}"

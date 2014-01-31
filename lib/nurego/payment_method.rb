@@ -8,7 +8,7 @@ module Nurego
       PaymentMethod.url
     end
 
-    def self.retrieve(id, api_key=nil)
+    def self.retrieve(id, api_key = nil)
       raise NotImplementedError.new("Payment Method cannot be retrieved without a organization ID. Retrieve a paymentmethod using organization.paymentmethod")
     end
 

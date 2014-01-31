@@ -18,7 +18,7 @@ require 'nurego/api_operations/list'
 # Resources
 require 'nurego/util'
 require 'nurego/json'
-require 'nurego/oauth'
+require 'nurego/auth'
 require 'nurego/nurego_object'
 require 'nurego/api_resource'
 require 'nurego/list_object'
@@ -42,12 +42,10 @@ require 'nurego/errors/api_connection_error'
 require 'nurego/errors/invalid_request_error'
 require 'nurego/errors/card_error'
 require 'nurego/errors/authentication_error'
+require 'nurego/errors/user_not_found_error'
 
 module Nurego
   @api_base = 'https://api.nurego.com'
-  @provider_site = 'https://uaa.nurego.com'
-  @client_id = 'your client id'
-  @client_secret = 'your client secret'
 
   @ssl_bundle_path  = File.dirname(__FILE__) + '/data/ca-certificates.crt'
   @verify_ssl_certs = true
@@ -55,18 +53,7 @@ module Nurego
   @logger = nil
 
   class << self
-    include OAuth
-
-    attr_accessor :api_key, :api_base, :verify_ssl_certs, :api_version, :header_token,
-                  :provider_site, :client_id, :client_secret, :logger
-  end
-
-  def self.login(username, password)
-    @header_token = fetch_header_token(username, password)
-  end
-
-  def self.logout
-    @header_token = nil
+    attr_accessor :api_key, :api_base, :verify_ssl_certs, :api_version
   end
 
   def self.api_url(url='')
