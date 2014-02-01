@@ -176,7 +176,7 @@ module Nurego
     }
 
     headers[:nurego_version] = api_version if api_version
-    headers[:authorization] = @header_token[:token] if @header_token
+    headers[:authorization] = Nurego::Auth.header_token[:token] if Nurego::Auth.header_token
 
     begin
       headers.update(:x_nurego_client_user_agent => Nurego::JSON.dump(user_agent))
