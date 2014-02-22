@@ -53,7 +53,7 @@ module Nurego
   @logger = nil
 
   class << self
-    attr_accessor :api_key, :api_base, :verify_ssl_certs, :api_version
+    attr_accessor :api_key, :api_base, :verify_ssl_certs, :api_version, :logger
   end
 
   def self.api_url(url='')
@@ -187,6 +187,11 @@ module Nurego
   end
 
   def self.execute_request(opts)
+    if @logger
+      @logger.info("nurego-ruby execute_request")
+      @logger.info(opts.inspect)
+    end
+    
     RestClient::Request.execute(opts)
   end
 
