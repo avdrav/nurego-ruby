@@ -187,6 +187,8 @@ module Nurego
   end
 
   def self.execute_request(opts)
+    opts[:headers][:x_request_id] = SecureRandom.uuid
+    
     if @logger
       @logger.info("nurego-ruby execute_request")
       @logger.info(opts.inspect)
