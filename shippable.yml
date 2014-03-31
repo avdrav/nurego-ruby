@@ -2,7 +2,7 @@ language: ruby
 rvm:
   - 1.9.3
 env:
-  - COVERAGE_REPORTS=coverage/rcov
+  - COVERAGE_REPORTS=coverage/rcov2
 notifications:
      email:
          recipients:
