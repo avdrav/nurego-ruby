@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 1.9.3
+env:
+  - COVERAGE_REPORTS=coverage/rcov
+notifications:
+     email:
+         recipients:
+             - ilia.gilderman@openskymarkets.com
