@@ -6,7 +6,7 @@ require_relative "example_setup"
 example_set_api_key
 example_set_uaa_client
 
-Nurego.login(EXAMPLE_EMAIL, EXAMPLE_PASSWORD)
+Nurego::Auth.login(EXAMPLE_EMAIL, EXAMPLE_PASSWORD)
 #puts "#{Nurego.access_token}"
 
 c = Nurego::Customer.me

@@ -7,7 +7,7 @@ def example_set_api_key
 end
 
 def example_set_uaa_client
-  Nurego.client_id = "portal"
-  Nurego.client_secret = "portalsecret"
-  Nurego.provider_site = "http://localhost:8080/uaa"
+  Nurego::Auth.client_id = "portal"
+  Nurego::Auth.client_secret = "portalsecret"
+  Nurego::Auth.provider_site = "http://localhost:8080/uaa"
 end
