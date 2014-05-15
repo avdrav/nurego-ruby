@@ -33,6 +33,7 @@ require 'nurego/plan'
 require 'nurego/feature'
 require 'nurego/bill'
 require 'nurego/payment_method'
+require 'nurego/entitlement'
 
 
 # Errors
