@@ -11,4 +11,6 @@ group :test do
   gem "simplecov-rcov"
   gem "rack-test"
   gem "ci_reporter"
+
+  gem 'nurego', :git => 'https://nurego-heroku-staging:nuregoheroku1@github.com/Nurego/nurego-ruby.git'
 end

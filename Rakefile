@@ -10,6 +10,11 @@ namespace "spec" do
     t.pattern = "**/unit/**/*_spec.rb"
   end
 
+  RSpec::Core::RakeTask.new("integration") do |t|
+    t.rspec_opts = ["--format", "documentation", "--colour"]
+    t.pattern = "**/integration/**/*_spec.rb"
+  end
+
   desc "Run specs with code coverage"
   task :rcov => ["ci:setup:rspec"] do
     require 'simplecov'

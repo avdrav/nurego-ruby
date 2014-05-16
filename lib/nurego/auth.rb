@@ -27,7 +27,7 @@ module Nurego
       rescue CF::UAA::NotFound, CF::UAA::TargetError => e
         raise UserNotFoundError.new('User not found') # TODO better error message
       rescue CF::UAA::AuthError, CF::UAA::BadResponse => e
-        raise AuthenticationError.new('OAuth authentication failed' +
+        raise AuthenticationError.new('OAuth authentication failed ' +
                                           'Make sure you set "Nurego.client_id = <client_id>". ' +
                                           'Please also make sure you set "Nurego.client_secret = <client secret>". ' +
                                           'See https://www.nurego.com/api for details, or email support@nurego.com ' +
@@ -47,7 +47,8 @@ module Nurego
             :header_token => info[:token_type] + " " + info[:access_token]
         }
       rescue CF::UAA::BadResponse, CF::UAA::TargetError => e
-        raise AuthenticationError.new('OAuth authentication failed' +
+        puts e.inspect
+        raise AuthenticationError.new('OAuth authentication failed ' +
                                           'Make sure you set "Nurego.client_id = <client_id>". ' +
                                           'Please also make sure you set "Nurego.client_secret = <client secret>". ' +
                                           'See https://www.nurego.com/api for details, or email support@nurego.com ' +
@@ -62,7 +63,7 @@ module Nurego
         info[:token_type] + " " + info[:access_token]
       rescue CF::UAA::BadResponse => e
         #TODO check error message here
-        raise AuthenticationError.new('OAuth authentication failed' +
+        raise AuthenticationError.new('OAuth authentication failed ' +
                                           'Make sure you set "Nurego.client_id = <client_id>". ' +
                                           'Please also make sure you set "Nurego.client_secret = <client secret>". ' +
                                           'See https://www.nurego.com/api for details, or email support@nurego.com ' +
