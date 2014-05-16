@@ -1,5 +1,5 @@
 require "uuidtools"
-require "nurego"
+require_relative "../../lib/nurego"
 
 describe "Nurego" do
   before(:all) do
