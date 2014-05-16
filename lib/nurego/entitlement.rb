@@ -1,20 +1,25 @@
 module Nurego
   class Entitlement < APIResource
     include Nurego::APIOperations::List
-    include Nurego::APIOperations::Update
+    include Nurego::APIOperations::Create
 
-    def self.set_usage(organization, feature_id, amount)
+
+    def set_usage(feature_id, amount)
       payload = {
           feature_id: feature_id,
-          organization: organization,
+          organization: id,
           amount: amount
       }
       response, api_key = Nurego.request(:put, "/v1/entitlements/usage", nil, payload)
     end
 
-    def self.is_allowed(organization, feature_id, amount)
-      url = "/v1/entitlements/allowed?organization=#{organization}&feature_id=#{feature_id}&amount=#{amount}"
-      response, api_key = Nurego.request(:get, url, nil, {})
+    def is_allowed(feature_id, requested_amount)
+      payload =  {
+          :organization => id,
+          :feature_id => feature_id,
+          :requested_amount => requested_amount
+      }
+      response, api_key = Nurego.request(:get, "/v1/entitlements/allowed", nil, payload)
       Util.convert_to_nurego_object(response, api_key)
     end
 

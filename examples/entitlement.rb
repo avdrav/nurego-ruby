@@ -27,13 +27,15 @@ begin
   puts "#{customers_ent.inspect}"
 
   feature_id = customers_ent[0][:id]
-  max_amount = customers_ent[0][:max_amount]
-  Nurego::Entitlement.set_usage(o[0][:id],  feature_id, max_amount - 1)
+  max_amount = customers_ent[0][:max_allowed_amount]
+  ent = Nurego::Entitlement.new({id: o[0][:id]})
 
-  allowed = Nurego::Entitlement.is_allowed(o[0][:id],  feature_id, 1)
+  ent.set_usage(feature_id, max_amount - 1)
+
+  allowed = ent.is_allowed(feature_id, 1)
   puts "#{allowed.inspect}"
 
-  allowed = Nurego::Entitlement.is_allowed(o[0][:id],  feature_id, 2)
+  allowed = ent.is_allowed(feature_id, 2)
   puts "#{allowed.inspect}"
 
 rescue Nurego::NuregoError => e
