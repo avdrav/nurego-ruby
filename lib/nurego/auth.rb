@@ -47,7 +47,6 @@ module Nurego
             :header_token => info[:token_type] + " " + info[:access_token]
         }
       rescue CF::UAA::BadResponse, CF::UAA::TargetError => e
-        puts e.inspect
         raise AuthenticationError.new('OAuth authentication failed ' +
                                           'Make sure you set "Nurego.client_id = <client_id>". ' +
                                           'Please also make sure you set "Nurego.client_secret = <client secret>". ' +
