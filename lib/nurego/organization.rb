@@ -15,8 +15,8 @@ module Nurego
       Bill.all({ :organization => id }, @api_key)[:bills]
     end
 
-    def entitlements(feature_id = nil)
-      Entitlement.all({:organization => id, :feature_id => feature_id}, @api_key)
+    def entitlements(provider_name, feature_id = nil)
+      Entitlement.all({:organization => id, :feature_id => feature_id, :provider_name => provider_name }, @api_key)
     end
 
   end
