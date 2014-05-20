@@ -1,24 +1,14 @@
 require "uuidtools"
+require "spec_helper"
 require_relative "../../lib/nurego"
 
 describe "Nurego" do
   before(:all) do
-    EXAMPLE_EMAIL = "integration.test+#{UUIDTools::UUID.random_create.to_s}@openskymarkets.com"
-    EXAMPLE_PASSWORD = "password"
 
-    Nurego.api_base = ENV['API_BASE'] || "http://localhost:31001/"
-    Nurego.api_key = ENV['NUREGO_API_KEY_TEST'] || 'tee00d77-d6f2-4f8d-8897-26fb89fbeb34'
 
     @common = {}
   end
 
-  def setup_login_and_login(no_login = false)
-    Nurego::Auth.client_id = "portal"
-    Nurego::Auth.client_secret = ENV['PORTALSECRET'] || "portalsecret"
-    Nurego::Auth.provider_site = ENV['UAA_URL'] || "http://localhost:8080/uaa"
-
-    Nurego::Auth.login(EXAMPLE_EMAIL, EXAMPLE_PASSWORD) unless no_login
-  end
 
   it "can register" do
     registration = Nurego::Registration.create({email: EXAMPLE_EMAIL})
@@ -26,6 +16,17 @@ describe "Nurego" do
     customer["email"].should == EXAMPLE_EMAIL
     customer["object"].should == "customer"
     @common[:customer] = customer
+
+
+    offering = Nurego::Offering.current
+    offering.plans.each do |plan|
+      plan.features.each do |feature|
+        puts feature.inspect
+      end
+    end
+    puts "Done"
+
+    plans = offering.plans.all
   end
 
   xit "can create new payment method" do

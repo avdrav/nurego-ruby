@@ -24,3 +24,10 @@ bundle install
 ruby -I./lib examples/login.rb
 
 
+ offering = Nurego::Offering.current
+    offering.plans.each do |plan|
+      plan.features.each do |feature|
+        puts feature.inspect
+      end
+    end
+

@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+
 gem "rake"
 gem "cf-uaa-lib", "= 1.3.10"
 gem "uuidtools"
@@ -11,6 +12,4 @@ group :test do
   gem "simplecov-rcov"
   gem "rack-test"
   gem "ci_reporter"
-
-#  gem 'nurego', :git => 'https://nurego-heroku-staging:nuregoheroku1@github.com/Nurego/nurego-ruby.git'
 end
