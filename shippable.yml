@@ -7,3 +7,5 @@ notifications:
      email:
          recipients:
              - ilia.gilderman@openskymarkets.com
+         on_success: change
+         on_failure: always
