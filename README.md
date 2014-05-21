@@ -8,11 +8,11 @@ Ruby bindings for Nurego API
 You don't need this source code unless you want to modify the gem. If
 you just want to use the Nurego Ruby bindings, you should run:
 
-  gem install --source https://code.stripe.com stripe
+  gem install --source https://code.nurego.com nurego
 
 If you want to build the gem from source:
 
-  gem build stripe.gemspec
+  gem build nurego.gemspec
 
 == Requirements
 
@@ -20,7 +20,7 @@ If you want to build the gem from source:
 
 == Mirrors
 
-The stripe gem is mirrored on Rubygems, so you should be able to
+The nurego gem is mirrored on Rubygems, so you should be able to
 install it via <tt>gem install nurego</tt> if desired. We recommend using
 the https://code.nurego.com mirror so all code is fetched over SSL.
 
