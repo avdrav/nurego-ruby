@@ -7,7 +7,7 @@ gem "uuidtools"
 gemspec
 
 group :test do
-  gem "rspec"
+  gem "rspec", "~> 2.14.0"
   gem "simplecov"
   gem "simplecov-rcov"
   gem "rack-test"
