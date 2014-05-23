@@ -13,4 +13,4 @@ before_script:
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
 script:
-  - rake spec SPEC_OPTS="-r ./junit.rb -f JUnit -o shippable/testresults/result.xml"
+  - rake spec:rcov SPEC_OPTS="-r ./junit.rb -f JUnit -o shippable/testresults/result.xml"
