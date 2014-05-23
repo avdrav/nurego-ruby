@@ -19,6 +19,7 @@ namespace "spec" do
   task :rcov => ["ci:setup:rspec"] do
     require 'simplecov'
     require 'simplecov-rcov'
+    require 'simplecov-csv'
 
     FileUtils.rm_rf File.join('.', "coverage")
 
