@@ -23,8 +23,8 @@ namespace "spec" do
     FileUtils.rm_rf File.join('.', "coverage")
 
     SimpleCov.start do
-      formatter SimpleCov::Formatter::RcovFormatter
-      coverage_dir "coverage"
+      formatter SimpleCov::Formatter::CSVFormatter
+      coverage_dir ENV["COVERAGE_REPORTS"]
       root '.'
 
       add_filter "/spec/"

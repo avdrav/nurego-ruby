@@ -10,6 +10,7 @@ group :test do
   gem "rspec"
   gem "simplecov"
   gem "simplecov-rcov"
+  gem "simplecov-csv"
   gem "rack-test"
   gem "ci_reporter"
 end
