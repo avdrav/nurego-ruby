@@ -25,8 +25,7 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rack-test')
   s.add_development_dependency('ci_reporter')
 
-  s.files = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- spec/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files = Dir.glob("{lib,examples}/**/*") + %w(Gemfile Gemfile.lock nurego.gemspec Rakefile VERSION LICENSE README.md)
+  s.test_files    = `git ls-files -- spec/unit*`.split("\n")
   s.require_paths = ['lib']
 end
