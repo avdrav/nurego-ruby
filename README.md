@@ -36,3 +36,9 @@ compromised in transit and alter the code of gems fetched securely over https:
 == Development
 
 Test cases can be run with: `bundle exec rake test`
+=======
+To run one of the examples use:
+
+cd nurego_ruby
+bundle install
+ruby -I./lib examples/<example_name>.rb

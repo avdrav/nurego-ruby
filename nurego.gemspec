@@ -10,13 +10,23 @@ spec = Gem::Specification.new do |s|
   s.authors = ['Ilia Gilderman']
   s.email = ['ilia@nurego.com']
   s.homepage = 'http://www.nurego.com/api'
+  s.license = 'MIT'
 
   s.add_dependency('rest-client', '~> 1.4')
   s.add_dependency('mime-types', '~> 1.25')
   s.add_dependency('multi_json', '>= 1.0.4', '< 2')
+  s.add_dependency('cf-uaa-lib', '= 1.3.10')
+
+  s.add_development_dependency('rake')
+  s.add_development_dependency('uuidtools')
+  s.add_development_dependency('rspec')
+  s.add_development_dependency('simplecov')
+  s.add_development_dependency('simplecov-rcov')
+  s.add_development_dependency('rack-test')
+  s.add_development_dependency('ci_reporter')
 
   s.files = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- test/*`.split("\n")
+  s.test_files    = `git ls-files -- spec/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
 end

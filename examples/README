@@ -1,33 +1,10 @@
-This file provides short explanations, of how to run the examples
-The examples themselves are not very comprehensive and mostly serve for testing purposes.
+Copyright (c) 2013- Nurego, Inc. (http://www.nurego.com)
 
-(i.e. how the payload should look like etc)
-
-There are two setup functions
-
-1. example_set_api_key - sets the api API key and the URL (default is localhost)
-
-you should provide the api key from any real (working) instance you have
-
-I you want to test subscription EXAMPLE_EMAIL should be changed
-
-
-2. example_set_uaa_client
-
-This sets uaa client and works only for Nurego instances
-
+This file provides a short explanations, of how to run the examples
+for nurego-ruby library
 
 To run one of the examples use:
 
 cd nurego_ruby
 bundle install
-ruby -I./lib examples/login.rb
-
-
- offering = Nurego::Offering.current
-    offering.plans.each do |plan|
-      plan.features.each do |feature|
-        puts feature.inspect
-      end
-    end
-
+ruby -I./lib examples/<example_name>.rb
