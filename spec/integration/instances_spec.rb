@@ -16,7 +16,7 @@ describe "Instances" do
     end
   end
 
-  xit "can retrieve connectors" do
+  it "can retrieve connectors" do
     # PENDING on connector fix
     # TODO create real connector and fetch it
     customer = Nurego::Customer.me

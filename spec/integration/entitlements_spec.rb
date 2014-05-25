@@ -11,13 +11,13 @@ describe "Entitlements" do
 
     customer = Nurego::Customer.me
     organization = customer.organizations[0]
-    ents = organization.entitlements
+    ents = organization.entitlements(nil, organization[:external_id])
 
     customers_ent = organization.entitlements('imported_customers')
 
     feature_id = customers_ent[0][:id]
     max_amount = customers_ent[0][:max_allowed_amount]
-    ent = Nurego::Entitlement.new({id: organization[:id]})
+    ent = Nurego::Entitlement.new({id: organization[:external_id]})
 
     ent.set_usage(feature_id, max_amount - 1)
 
