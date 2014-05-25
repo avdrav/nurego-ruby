@@ -18,6 +18,18 @@ describe "Offerings" do
     end
   end
 
+  it "can fetch current offering with distribution channel" do
+    offering = Nurego::Offering.current({:distribution_channel => 'website'})
+    offering["object"].should == "offering"
+
+    offering.plans.each do |plan|
+      plan["object"].should == "plan"
+      plan.features.each do |feature|
+        feature["object"].should == "feature"
+      end
+    end
+  end
+
   it "can fetch the plans from offering" do
     offering = Nurego::Offering.current
     plans = offering.plans
