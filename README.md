@@ -23,4 +23,3 @@ If you want to build the gem from source:
 Test cases can be run with: `bundle exec rake spec:unit`
 
 Examples can be run with: `bundle install; ruby -I./lib examples/<example_name>.rb`
-
