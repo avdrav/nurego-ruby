@@ -4,11 +4,7 @@ rvm:
 env:
   - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
 notifications:
-  email:
-    recipients:
-      - os-eng@openskymarkets.com
-    on_success: change
-    on_failure: always
+  email: false
 before_script:
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
